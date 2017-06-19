@@ -7,4 +7,12 @@ class User < ApplicationRecord
   validates_presence_of :encrypted_password
 
   validates_uniqueness_of :email
+
+  def roles_list
+    roles.split(' ')
+  end
+
+  def has_role?(role)
+    roles_list.include?(role)
+  end
 end
